@@ -1,13 +1,10 @@
 import React, { useRef, useEffect } from 'react';
 import * as d3 from 'd3';
-
-import {
-  config
-} from "./config.js";
-
+const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5001';
+console.log(apiUrl);
 export const events = {
   call_api: function () {
-    const url = `http://${config.api_url}:${config.api_port}/${config.api_endpoint}`;
+    const url = `${apiUrl}/inference`;
     const sentence = events.read_sentence();
 
     return fetch(url, {
