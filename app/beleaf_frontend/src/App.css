@@ -1,0 +1,147 @@
+* {
+  background: #8ca7bb;
+}
+
+
+.title, .subtitle {
+  text-align: center;
+  color: whitesmoke;
+}
+.title {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.subtitle {
+  margin-top: -30px;
+  font-size: 24px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-rows: 100%;
+  grid-template-columns: 45% 10% 45%;
+  gap: 10px;
+  width: 80vw;
+  height: 70vh;
+  margin-top: 70px;
+  margin: 0 auto;
+}
+
+.item {
+  background: transparent;
+  padding: 10px;
+}
+
+.item:nth-child(2) {
+  align-self: center;
+  text-align: center;
+}
+
+.icon {
+  fill: whitesmoke;
+  font-size: 20px; /* This sets the size of the icon */
+  cursor: pointer;
+  background-color: #3e6b33; /* Your desired background color */
+  height: 80px; /* Equal to the width to make a circle */
+  width: 80px; /* Equal to the height to make a circle */
+  padding: 20px; /* Adjust the padding as needed */
+}
+
+textarea {
+  resize: none;
+  width: 100%;
+  height: 60.2%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: #d1ccc0;
+  border: none;
+  padding: 10px;
+  font-size: 18px;
+  font-family: arial;
+  border-radius: 4px;
+}
+
+.hold_plot {
+  width: 100%;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background:#2c2c54;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .wrapper {
+    display: grid;
+    grid-template-rows:  45% 10% 45%;
+    grid-template-columns: 100%;
+  }
+  svg {
+    transform: rotate(90deg);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+
+}
+
+
+.App {
+  text-align: center; /* Center align the content */
+}
+
+.input-selector {
+  margin-bottom: 20px; /* Give some space below the toggle */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the toggle switch */
+}
+
+
+.input-type-label {
+  font-size: 18px; /* Larger text for readability */
+}
+.explanation-text {
+  color: whitesmoke; /* Choose a color that fits your design */
+  font-size: 18px; /* This is your text size, adjust as needed */
+  margin-top: 20px; /* Spacing between the textarea and the explanation text */
+}
+@keyframes clickAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Class to apply the animation */
+.animate-click {
+  animation: clickAnimation 0.5s ease;
+}
+
+.loading-bar {
+  width: 100%;
+  height: 5px;
+  background-color: #ddd;
+  position: relative;
+  overflow: hidden;
+}
+
+.loading-bar-progress {
+  height: 100%;
+  background-color: green;
+  width: 0%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: width 0.5s ease-out;
+}
