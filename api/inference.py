@@ -3,7 +3,7 @@ import spacy
 from fastcoref import spacy_component
 import re
 
-PATH = "/Users/john/Hugging_Face_Tutorial/api/source_target_ckpt"
+PATH = "./source_target_ckpt"
 model = T5ForConditionalGeneration.from_pretrained(PATH)
 tokenizer = T5Tokenizer.from_pretrained("google/flan-t5-large")
 

@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  frontend:
+    build:
+      context: ./app/beleaf_frontend # The location of your React app's Dockerfile
+    ports:
+      - "80:80" # Expose the app on port 80
+    depends_on:
+      - backend
+    environment:
+      - REACT_APP_API_URL=http://backend:5001
+
+  backend:
+    build:
+      context: ./api # The location of your Flask app's Dockerfile
+    ports:
+      - "5001:5001"

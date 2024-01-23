@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import "./App.css";
 import { events, transformPOSTJson, adjustHierarchy } from "./events.js";
 import { FaLeaf,FaDownload } from "react-icons/fa";
+const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5001';
+// Use apiUrl when making fetch/axios requests
 
 function App() {
   const [animate, setAnimate] = useState(false);
