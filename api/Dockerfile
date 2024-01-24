@@ -16,8 +16,5 @@ RUN python -m spacy download en_core_web_sm
 # Make port 5001 available to the world outside this container
 EXPOSE 5001
 
-# Define environment variable
-ENV NAME beleaf-api
-
 # Run app.py when the container launches
 CMD ["python", "api.py"]

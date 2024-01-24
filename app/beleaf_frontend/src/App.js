@@ -8,7 +8,7 @@ function App() {
   const [animate, setAnimate] = useState(false);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
-
+  const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5001';
   const handleClick = () => {
       clearPlot();
     // Trigger the animation
@@ -16,7 +16,7 @@ function App() {
     setLoading(true); // Start loading
 
     // Call the API
-    events.call_api().then(response => {
+    events.call_api(apiUrl).then(response => {
       setData(adjustHierarchy(transformPOSTJson(response)));
       setLoading(false);
     }).catch(error => {

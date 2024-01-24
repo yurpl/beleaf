@@ -1,9 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import * as d3 from 'd3';
-const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5001';
-console.log(apiUrl);
 export const events = {
-  call_api: function () {
+  call_api: function (apiUrl) {
     const url = `${apiUrl}/inference`;
     const sentence = events.read_sentence();
 
