@@ -171,43 +171,34 @@ def tree2triplet(tree):
     return triplets
 
 
-def infer(text):
+def infer(texts):
     device = 'cpu'
-
     processed_texts = []
-    doc = nlp(text[0], component_cfg={"fastcoref": {'resolve_text': True}})
-    coref = doc._.resolved_text
-    coref_doc = nlp(coref)
-    for sentence in coref_doc.sents:
-        processed_texts.append(str(sentence))
 
+    for text in texts:
+        doc = nlp(text, component_cfg={"fastcoref": {'resolve_text': True}})
+        coref = doc._.resolved_text
+        coref_doc = nlp(coref)
+        processed_texts.extend([str(sentence) for sentence in coref_doc.sents])
     tokenized_inputs = tokenizer.batch_encode_plus(
         processed_texts,
         max_length=100,
         padding=True,
         truncation=True,
         return_tensors="pt"
-    )
+    ).to(device)
 
     outs = model.generate(
-        input_ids=tokenized_inputs["input_ids"].to(device),
-        attention_mask=tokenized_inputs["attention_mask"].to(device),
+        **tokenized_inputs,
         max_length=100
     )
+    decoded_outputs = tokenizer.batch_decode(outs, skip_special_tokens=True)
+    all_sents = (tree2triplet(decoded_output) for decoded_output in decoded_outputs)
 
+    unique_sentences = list(OrderedSet(item for sublist in all_sents for item in sublist))
 
-    all_sents = []
-    for idx, out in enumerate(outs):
-        dec = tokenizer.decode(out, skip_special_tokens=True)
-        all_sents.append(tree2triplet(dec))
+    spans_sentences = [[source, target, belief, get_text_span(target, ' '.join(texts))]
+                       for source, target, belief in unique_sentences if get_text_span(target, ' '.join(texts))]
 
-    flattened_sentences = [item for sublist in all_sents for item in sublist]
-    ordered_set_sentences = OrderedSet(flattened_sentences)
-    unique_sentences = list(ordered_set_sentences)
-    spans_sentences = []
-    for parsed in unique_sentences:
-        source, target, belief = parsed
-        span = get_text_span(target, ' '.join(text))
-        if span:
-            spans_sentences.append([source, target, belief, span,])
     return {"result": spans_sentences}
+

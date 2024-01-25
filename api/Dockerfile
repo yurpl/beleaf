@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 RUN python -m spacy download en_core_web_sm
 
 # Make port 5001 available to the world outside this container
-EXPOSE 5001
+EXPOSE 5000
 
 # Run app.py when the container launches
 CMD ["python", "api.py"]

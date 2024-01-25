@@ -12,6 +12,8 @@ COPY package.json yarn.lock ./
 RUN yarn install
 COPY . ./
 RUN yarn build
+RUN chmod +x node_modules/.bin/react-scripts
+RUN yarn build
 
 # Step 2: Serve the app with Nginx
 FROM nginx:stable-alpine

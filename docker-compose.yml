@@ -4,17 +4,17 @@ services:
     build:
       context: ./app/beleaf_frontend
       args:
-        - REACT_APP_API_URL=http://backend:5001
+        - REACT_APP_API_URL=http://67.205.165.182:5000
     ports:
       - "80:80"
     depends_on:
       - backend
     environment:
-      - REACT_APP_API_URL=http://backend:5001
+      - REACT_APP_API_URL=http://67.205.165.182:5000
 
 
   backend:
     build:
-      context: ./api # The location of your Flask app's Dockerfile
+      context: ./api
     ports:
-      - "5001:5001"
+      - "5000:5000"
