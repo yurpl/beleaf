@@ -1,5 +1,5 @@
 # Site
-Our site is hosted at: [beleaf.live](beleaf.live)
+Our site is hosted at: [beleaf.live](http://beleaf.live)
 # Steps Run Demo Locally
 ## Clone repo
 `git clone https://github.com/yurpl/beleaf.git`
