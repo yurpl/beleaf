@@ -4,13 +4,13 @@ services:
     build:
       context: ./app/beleaf_frontend
       args:
-        - REACT_APP_API_URL=http://67.205.165.182:5000
+        - REACT_APP_API_URL=http://localhost:5000
     ports:
       - "80:80"
     depends_on:
       - backend
     environment:
-      - REACT_APP_API_URL=http://67.205.165.182:5000
+      - REACT_APP_API_URL=http://localhost:5000
 
 
   backend:
