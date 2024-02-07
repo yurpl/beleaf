@@ -2,7 +2,8 @@
 Our site is hosted at: [beleaf.live](http://beleaf.live)
 # Steps Run Demo Locally
 ## Docker
-`docker compuse up`
+All Dockerfiles included and Docker compose script also included. To run on docker just run:
+`docker compose up`
 ## Clone repo
 `git clone https://github.com/yurpl/beleaf.git`
 
